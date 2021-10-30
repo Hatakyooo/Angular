@@ -14,7 +14,7 @@ export class EditComponent implements OnInit {
     name : "",
     title : ""
   }
-  load: Boolean = false;
+  
   constructor(
     private _location: Location,
     private route : ActivatedRoute,
@@ -26,11 +26,11 @@ export class EditComponent implements OnInit {
   this.route.paramMap.subscribe(params =>{
       this.titleId = Number(params.get('id'));
   })
-  this.load = true;
+  
   this.DataService.GetDataId(this.titleId).then(data => {
     console.log(data)
     this.Users = data;
-    this.load = false;   
+      
     console.log('Promise resolved.')
   })
   .catch(error => console.error
