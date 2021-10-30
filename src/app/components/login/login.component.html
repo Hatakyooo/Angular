@@ -1,0 +1,43 @@
+<div class="container">
+    <H1 class="mt-5">Login</H1>
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)="f.form.valid && onSubmit(f.value)" #f="ngForm">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Name</label>
+                    <input type="text" class="form-control" #name="ngModel" name="name" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" [(ngModel)]="login.name" placeholder="Enter name" required minlength="6" maxlength="20" pattern="^[A-Za-z0-9 ]+$" />
+                    <div *ngIf="f.submitted && name.invalid">
+                        <span role="alert" *ngIf="name.errors?.required">
+                    name is require?
+                  </span>
+                        <span *ngIf="name?.errors?.minlength && name?.touched">
+                    name ít hơn 6 kí tự
+                  </span>
+                        <span *ngIf="name.errors?.maxlength && name?.touched">
+                    name quá dài
+                  </span>
+                        <span *ngIf="name?.errors?.name && name?.touched">k phải name</span>
+                        <span role="alert" *ngIf="name.errors?.pattern">
+                          text is pattern?
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1 ">pass</label>
+                    <input type="password" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && pass.invalid }" placeholder="pass " #pass="ngModel" name="pass" [(ngModel)]="login.pass" required minlength="6" />
+                    <div *ngIf="f.submitted && pass.invalid">
+                        <span role="alert" *ngIf="pass.errors?.required">
+                    pass is require?
+                  </span>
+                        <span role="alert" *ngIf="pass.errors?.minlength">
+                    pass ít hơn 6 kí tự
+                  </span>
+                    </div>
+                </div>
+
+
+                <button type="submit " class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

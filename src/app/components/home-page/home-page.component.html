@@ -1,0 +1,27 @@
+<h2 class="text-center mb-2">
+    Dữ liệu
+</h2>
+
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">title</th>
+            <th scope="col"><a [routerLink]="['add']">Thêm</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><span *ngIf="load">loading... </span></tr>
+        <tr *ngFor="let da of User">
+
+            <th scope="row"> {{ da?.id }}</th>
+            <td><a [routerLink]="'title/' + da?.id ">{{ da?.name }}</a></td>
+            <td>{{ da?.title }}</td>
+            <td><button class="btn btn-danger mr-2" (click)="deleteid(da.id)">xóa</button>
+                <button type="submit" class="btn "><a [routerLink]="'edit/' + da?.id "> sửa </a></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
